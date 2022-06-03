@@ -32,9 +32,9 @@ public class MenuFuncionario {
                     do {
                         System.out.println("        Escolha uma opção:");
                         System.out.println("(V)        Voltar para a tela principal");
-                        System.out.println("(E)        Exibir um medicamento pelo ID:");
-                        System.out.println("(A)        Atualizar medicamento:");
-                        System.out.println("(X)        Apagar medicamento:");
+                        System.out.println("(E)        Exibir um funcionário pelo ID:");
+                        System.out.println("(A)        Atualizar funcionário:");
+                        System.out.println("(X)        Apagar funcionário:");
                         respostas = entrada.next();
                         resV = respostas.compareToIgnoreCase("v");
                         resE = respostas.compareToIgnoreCase("e");
