@@ -54,7 +54,17 @@ public class MenuRemedio{
                     } else if (resA == 0) {
                         System.out.println("        Digite o ID que deseja editar:");
                         String IDEditar = entrada.next();
-                        remedios.editar(IDEditar);
+                        System.out.println("        Digite o nome do laboratorio:");
+                        String nomeLab = entrada.next();
+                        System.out.println("        Digite o preço do remédio:");
+                        float preco = entrada.nextFloat();
+                        System.out.println("        Digite a data de vencimento:");
+                        String DTVenc = entrada.next();
+                        System.out.println("        Digite nome do medicamento:");
+                        String nomeMed = entrada.next();
+                        System.out.println("        Digite a quantidade no estoque:");
+                        int Estoque = entrada.nextInt();
+                        remedios.editar(IDEditar, nomeLab, preco, DTVenc, nomeMed, Estoque);
                     } else if (resX == 0) {
                         System.out.println("        Digite o ID que deseja apagar:");
                         String IDApagar = entrada.next();

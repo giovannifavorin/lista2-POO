@@ -25,7 +25,7 @@ public class MenuFuncionario {
             if (funcionario.conectado()) {
                 if (resultL == 0) {
                     String respostas;
-                    int resV, resE, resA, resX;
+                    int resV, resA, resX;
                     System.out.println("====================================================================");
                     System.out.println("        SUPER SISFARMA PREMIUM 2022");
                     System.out.println("        LISTAGEM DE FUNCIONÁRIOS");
@@ -39,27 +39,34 @@ public class MenuFuncionario {
                         System.out.println("(X)        Apagar funcionário:");
                         respostas = entrada.next();
                         resV = respostas.compareToIgnoreCase("v");
-                        resE = respostas.compareToIgnoreCase("e");
                         resA = respostas.compareToIgnoreCase("a");
                         resX = respostas.compareToIgnoreCase("x");
-                    } while ((resV != 0) && (resE != 0) && (resA != 0) && (resX != 0));
+                    } while ((resV != 0) && (resA != 0) && (resX != 0));
                     if (resV == 0) {
                         menuCentral.MenuCentral();
-                    } else if (resE == 0) {
-                        System.out.println("        Digite o ID que deseja buscar para detalhar:");
-                        String IDDetallhes = entrada.next();
-                        funcionario.detalhes(IDDetallhes);
                     } else if (resA == 0) {
                         System.out.println("        Digite o ID que deseja editar:");
                         String IDEditar = entrada.next();
-                        funcionario.editar(IDEditar);
+                        System.out.println("        Digite o nome do funcionario:");
+                        String nome_funcionario = entrada.next();
+                        System.out.println("        Digite a idade do funcionario:");
+                        int idade = entrada.nextInt();
+                        System.out.println("        Digite o contato do funcionario:");
+                        String contato = entrada.next();
+                        funcionario.editar(IDEditar, nome_funcionario, idade, contato);
                     } else if (resX == 0) {
                         System.out.println("        Digite o ID que deseja apagar:");
                         String IDApagar = entrada.next();
                         funcionario.apagar(IDApagar);
                     }
                 } else if (resultI == 1){
-                    funcionario.inserir();
+                    System.out.println("        Digite o nome do funcionario:");
+                    String nome_funcionario = entrada.next();
+                    System.out.println("        Digite a idade do funcionario:");
+                    int idade = entrada.nextInt();
+                    System.out.println("        Digite o contato do funcionario:");
+                    String contato = entrada.next();
+                    funcionario.inserir(nome_funcionario, idade, contato);
                 }
                 funcionario.desconectar();
             }   else {

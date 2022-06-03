@@ -21,7 +21,6 @@ ENGINE = InnoDB
 CREATE TABLE IF NOT EXISTS `mydb`.`funcionario` (
   `idfuncionario` INT NOT NULL,
   `nome_funcionario` VARCHAR(45) NULL,
-  `cargo_funcionario` VARCHAR(45) NULL,
   `contato` VARCHAR(45) NULL,
   PRIMARY KEY (`idfuncionario`))
 ENGINE = InnoDB

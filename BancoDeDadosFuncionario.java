@@ -30,15 +30,46 @@ public class BancoDeDadosFuncionario {
         }
     }
 
-    public void listar(){}
+    public void listar(){
+        try{
+            String query = "SELECT * FROM funcionario ORDER BY idfuncionario";
+            this.resultSet = this.statement.executeQuery(query);
+            this.statement = this.connection.createStatement();
 
-    public void detalhes(String id){}
+            while (this.resultSet.next()) {
+                System.out.println("ID - " + this.resultSet.getString("idfuncionario") + "" + this.resultSet.getString("nome_funcionario") + " " + this.resultSet.getString("contato"));//Printar todos os dados 
+            }
+        } catch(Exception erro){
+            System.out.println("Erro: " + erro.getMessage());
+        }
+    }
 
-    public void inserir(){}
+    public void inserir(String nome_funcionario, int idade, String contato){
+        try {
+            String query = "UPDATE funcionario nome_funcionario (nome_funcionario, idade, contato) VALUES ('"+ nome_funcionario + "', '"+ idade + "', '" + contato + ");";//Terminar de escrever os dados aqui
+            this.statement.executeUpdate(query);
+        } catch(Exception erro){
+            System.out.println("Erro: " + erro.getMessage());
+        }
+    }
 
-    public void editar(String id){}
+    public void editar(String id, String nome_funcionario, int idade, String contato ){
+        try {
+            String query = "UPDATE funcionario SET nome_funcionario = '" + nome_funcionario + "', idade = '" + idade + "', contato = '" + contato + "' WHERE id = '" + id +";";//Terminar de escrever os dados aqui
+            this.statement.executeUpdate(query);
+        } catch(Exception erro){
+            System.out.println("Erro: " + erro.getMessage());
+        }
+    }
 
-    public void apagar(String id){}
+    public void apagar(String id){
+        try {
+            String query = "DELETE FROM funcionario WHERE id = " + id + ";";
+            this.statement.executeUpdate(query);
+        } catch(Exception erro){
+            System.out.println("Erro: " + erro.getMessage());
+        }
+    }
 
     public void desconectar(){
         try{
