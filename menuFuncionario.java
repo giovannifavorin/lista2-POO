@@ -2,6 +2,8 @@ import java.util.Scanner;
 public class MenuFuncionario {
     public void MenuFuncionario(){
         BancoDeDadosFuncionario funcionario = new BancoDeDadosFuncionario();
+        MenuCentral menuCentral = new MenuCentral();
+
         try (Scanner entrada = new Scanner(System.in)) {
             int resultL, resultI;
             do {
@@ -23,35 +25,48 @@ public class MenuFuncionario {
             if (funcionario.conectado()) {
                 if (resultL == 0) {
                     String respostas;
-                    int resV, resE, resA, resX;
+                    int resV, resA, resX;
                     System.out.println("====================================================================");
                     System.out.println("        SUPER SISFARMA PREMIUM 2022");
-                    System.out.println("        LISTAGEM DE MEDICAMENTOS");
+                    System.out.println("        LISTAGEM DE FUNCIONÁRIOS");
                     System.out.println("====================================================================");
                     funcionario.listar();
                     do {
                         System.out.println("        Escolha uma opção:");
                         System.out.println("(V)        Voltar para a tela principal");
-                        System.out.println("(E)        Exibir um medicamento pelo ID:");
-                        System.out.println("(A)        Atualizar medicamento:");
-                        System.out.println("(X)        Apagar medicamento:");
+                        System.out.println("(E)        Exibir um funcionário pelo ID:");
+                        System.out.println("(A)        Atualizar funcionário:");
+                        System.out.println("(X)        Apagar funcionário:");
                         respostas = entrada.next();
                         resV = respostas.compareToIgnoreCase("v");
-                        resE = respostas.compareToIgnoreCase("e");
                         resA = respostas.compareToIgnoreCase("a");
                         resX = respostas.compareToIgnoreCase("x");
-                    } while ((resV != 0) && (resE != 0) && (resA != 0) && (resX != 0));
+                    } while ((resV != 0) && (resA != 0) && (resX != 0));
                     if (resV == 0) {
-                        
-                    } else if (resE == 0) {
-                        
+                        menuCentral.MenuCentral();
                     } else if (resA == 0) {
-                        //funcionario.editar();
+                        System.out.println("        Digite o ID que deseja editar:");
+                        String IDEditar = entrada.next();
+                        System.out.println("        Digite o nome do funcionario:");
+                        String nome_funcionario = entrada.next();
+                        System.out.println("        Digite a idade do funcionario:");
+                        int idade = entrada.nextInt();
+                        System.out.println("        Digite o contato do funcionario:");
+                        String contato = entrada.next();
+                        funcionario.editar(IDEditar, nome_funcionario, idade, contato);
                     } else if (resX == 0) {
-                        //funcionario.apagar();
+                        System.out.println("        Digite o ID que deseja apagar:");
+                        String IDApagar = entrada.next();
+                        funcionario.apagar(IDApagar);
                     }
                 } else if (resultI == 1){
-                    funcionario.inserir();
+                    System.out.println("        Digite o nome do funcionario:");
+                    String nome_funcionario = entrada.next();
+                    System.out.println("        Digite a idade do funcionario:");
+                    int idade = entrada.nextInt();
+                    System.out.println("        Digite o contato do funcionario:");
+                    String contato = entrada.next();
+                    funcionario.inserir(nome_funcionario, idade, contato);
                 }
                 funcionario.desconectar();
             }   else {
