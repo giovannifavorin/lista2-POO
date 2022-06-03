@@ -1,7 +1,9 @@
+import java.util.Date;
 import java.util.Scanner;
 public class MenuRemedio{
     public void MenuRemedio(){
         BancoDeDadosRemedio remedios = new BancoDeDadosRemedio();
+        MenuCentral menuCentral = new MenuCentral();
 
         try (Scanner entrada = new Scanner(System.in)) {
             int resultL, resultI;
@@ -44,16 +46,32 @@ public class MenuRemedio{
                         resX = respostas.compareToIgnoreCase("x");
                     } while ((resV != 0) && (resE != 0) && (resA != 0) && (resX != 0));
                     if (resV == 0) {
-                        
+                        menuCentral.MenuCentral();
                     } else if (resE == 0) {
-                        
+                        System.out.println("        Digite o ID que deseja buscar para detalhar:");
+                        String IDDetallhes = entrada.next();
+                        remedios.detalhes(IDDetallhes);
                     } else if (resA == 0) {
-                        remedios.editar();
+                        System.out.println("        Digite o ID que deseja editar:");
+                        String IDEditar = entrada.next();
+                        remedios.editar(IDEditar);
                     } else if (resX == 0) {
-                        //remedios.apagar();
+                        System.out.println("        Digite o ID que deseja apagar:");
+                        String IDApagar = entrada.next();
+                        remedios.apagar(IDApagar);
                     }
                 } else if (resultI == 1){
-                    remedios.inserir();
+                    System.out.println("        Digite o nome do laboratorio:");
+                    String nomeLab = entrada.next();
+                    System.out.println("        Digite o preço do remédio:");
+                    float preco = entrada.nextFloat();
+                    System.out.println("        Digite a data de vencimento:");
+                    String DTVenc = entrada.next();
+                    System.out.println("        Digite nome do medicamento:");
+                    String nomeMed = entrada.next();
+                    System.out.println("        Digite a quantidade no estoque:");
+                    int Estoque = entrada.nextInt();
+                    remedios.inserir(nomeLab, preco, DTVenc, nomeMed, Estoque);
                 }
                 remedios.desconectar();
             }   else {

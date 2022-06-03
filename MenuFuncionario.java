@@ -2,6 +2,8 @@ import java.util.Scanner;
 public class MenuFuncionario {
     public void MenuFuncionario(){
         BancoDeDadosFuncionario funcionario = new BancoDeDadosFuncionario();
+        MenuCentral menuCentral = new MenuCentral();
+
         try (Scanner entrada = new Scanner(System.in)) {
             int resultL, resultI;
             do {
@@ -42,13 +44,19 @@ public class MenuFuncionario {
                         resX = respostas.compareToIgnoreCase("x");
                     } while ((resV != 0) && (resE != 0) && (resA != 0) && (resX != 0));
                     if (resV == 0) {
-                        
+                        menuCentral.MenuCentral();
                     } else if (resE == 0) {
-                        
+                        System.out.println("        Digite o ID que deseja buscar para detalhar:");
+                        String IDDetallhes = entrada.next();
+                        funcionario.detalhes(IDDetallhes);
                     } else if (resA == 0) {
-                        //funcionario.editar();
+                        System.out.println("        Digite o ID que deseja editar:");
+                        String IDEditar = entrada.next();
+                        funcionario.editar(IDEditar);
                     } else if (resX == 0) {
-                        //funcionario.apagar();
+                        System.out.println("        Digite o ID que deseja apagar:");
+                        String IDApagar = entrada.next();
+                        funcionario.apagar(IDApagar);
                     }
                 } else if (resultI == 1){
                     funcionario.inserir();

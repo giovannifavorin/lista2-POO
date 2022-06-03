@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class MenuCliente {
     public void MenuCliente(){
         BancoDeDadosCliente cliente = new BancoDeDadosCliente();
+        MenuCentral menuCentral = new MenuCentral();
         try (Scanner entrada = new Scanner(System.in)) {
             int resultL, resultI;
             do {
@@ -42,13 +43,19 @@ public class MenuCliente {
                         resX = respostas.compareToIgnoreCase("x");
                     } while ((resV != 0) && (resE != 0) && (resA != 0) && (resX != 0));
                     if (resV == 0) {
-                        
+                        menuCentral.MenuCentral();
                     } else if (resE == 0) {
-                        
+                        System.out.println("        Digite o ID que deseja buscar para detalhar:");
+                        String IDDetallhes = entrada.next();
+                        cliente.editar(IDDetallhes);
                     } else if (resA == 0) {
-                        //cliente.editar();
+                        System.out.println("        Digite o ID que deseja editar:");
+                        String IDEditar = entrada.next();
+                        cliente.editar(IDEditar);
                     } else if (resX == 0) {
-                        //cliente.apagar();
+                        System.out.println("        Digite o ID que deseja apagar:");
+                        String IDApagar = entrada.next();
+                        cliente.apagar(IDApagar);
                     }
                 } else if (resultI == 1){
                     cliente.inserir();

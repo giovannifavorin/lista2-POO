@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class MenuCentral {
     public void MenuCentral(){
-        menuRemedio MenuRemedio = new menuRemedio();
+        MenuRemedio MenuRemedio = new MenuRemedio();
         MenuCliente MenuCliente = new MenuCliente();
         MenuFuncionario MenuFuncionario = new MenuFuncionario();
 
