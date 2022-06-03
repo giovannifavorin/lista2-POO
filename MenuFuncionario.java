@@ -26,7 +26,7 @@ public class MenuFuncionario {
                     int resV, resE, resA, resX;
                     System.out.println("====================================================================");
                     System.out.println("        SUPER SISFARMA PREMIUM 2022");
-                    System.out.println("        LISTAGEM DE MEDICAMENTOS");
+                    System.out.println("        LISTAGEM DE FUNCIONÁRIOS");
                     System.out.println("====================================================================");
                     funcionario.listar();
                     do {
