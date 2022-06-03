@@ -26,7 +26,7 @@ public class MenuCliente {
                     int resV, resE, resA, resX;
                     System.out.println("====================================================================");
                     System.out.println("        SUPER SISFARMA PREMIUM 2022");
-                    System.out.println("        LISTAGEM DE CLIENTE");
+                    System.out.println("        LISTAGEM DE CLIENTES");
                     System.out.println("====================================================================");
                     cliente.listar();
                     do {
