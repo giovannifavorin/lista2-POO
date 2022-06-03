@@ -1,7 +1,8 @@
 import java.util.Scanner;
-public class MenuCliente {
-    public void MenuCliente(){
-        BancoDeDadosCliente cliente = new BancoDeDadosCliente();
+public class MenuRemedio{
+    public void MenuRemedio(){
+        BancoDeDadosRemedio remedios = new BancoDeDadosRemedio();
+
         try (Scanner entrada = new Scanner(System.in)) {
             int resultL, resultI;
             do {
@@ -9,18 +10,19 @@ public class MenuCliente {
                 System.out.println("====================================================================");
                 System.out.println("        SUPER SISFARMA PREMIUM 2022");
                 System.out.println("====================================================================");
-                System.out.println("        Clientes");
+                System.out.println("        MEDICAMENTOS");
                 System.out.println("        Escolha uma opção:\n");
-                System.out.println("    (L) Listar todos os clientes");
-                System.out.println("    (I) Inserir novo cliente");
+                System.out.println("    (L) Listar todos os medicamentos");
+                System.out.println("    (I) Inserir novo medicamento");
                 System.out.println("====================================================================");
                 respostas = entrada.next();
                 resultL = respostas.compareToIgnoreCase("l");
                 resultI = respostas.compareToIgnoreCase("i");
             } while ((resultL != 0) && (resultI != 0));
 
-            cliente.conectar();
-            if (cliente.conectado()) {
+            remedios.conectar();
+
+            if (remedios.conectado()) {
                 if (resultL == 0) {
                     String respostas;
                     int resV, resE, resA, resX;
@@ -28,7 +30,7 @@ public class MenuCliente {
                     System.out.println("        SUPER SISFARMA PREMIUM 2022");
                     System.out.println("        LISTAGEM DE MEDICAMENTOS");
                     System.out.println("====================================================================");
-                    cliente.listar();
+                    remedios.listar();
                     do {
                         System.out.println("        Escolha uma opção:");
                         System.out.println("(V)        Voltar para a tela principal");
@@ -46,14 +48,14 @@ public class MenuCliente {
                     } else if (resE == 0) {
                         
                     } else if (resA == 0) {
-                        //cliente.editar();
+                        remedios.editar();
                     } else if (resX == 0) {
-                        //cliente.apagar();
+                        //remedios.apagar();
                     }
                 } else if (resultI == 1){
-                    cliente.inserir();
+                    remedios.inserir();
                 }
-                cliente.desconectar();
+                remedios.desconectar();
             }   else {
                 System.out.println("Não foi possível conectar ao banco de dados.");
             }

@@ -44,6 +44,8 @@ public class BancoDeDadosRemedio {
         }
     }
 
+    public void detalhes(String id){}
+
     public void inserir(){//Colocar todos os dados
         try {
             String query = "UPDATE remedio SET ";//Terminar de escrever os dados aqui
